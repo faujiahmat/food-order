@@ -46,7 +46,7 @@ function cartReducer(state, action) {
 
       updateItems[existingCartItemIndex] = updateItem;
     } else {
-      updateItems = updateItems.filter((item) => item.id !== action.item.id);
+      updateItems = updateItems.filter((item) => item.id !== action.id);
     }
 
     return { ...state, items: updateItems };
@@ -63,7 +63,7 @@ export function CartContextProvider({ children }) {
   }
 
   function removeItem(id) {
-    dispatchCartAction({ type: 'REMOVE_ITEM', item });
+    dispatchCartAction({ type: 'REMOVE_ITEM', id });
   }
 
   const cartContext = {
